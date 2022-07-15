@@ -35,16 +35,6 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
  ‣ _Limit Harian : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}_
  ‣ _Limit Game : ${isOwner ? '-' : cekGLimit(sender, gcount, glimit)}_
  ‣ _Saldo : Rp.${toCommas(getBalance(sender, balance))}_
- 
- ⌂ *THANKS TO*
- ➢ irfann
- ➢ Ra-api
- ➢ Dt4-api
- ➢ Hxz-api
- ➢ Xfarr-api
- ➢ Leyscoders
- ➢ Lexxy Official
- ➢ Penyedia Modules
 `
 }
 
@@ -187,6 +177,16 @@ _*•──•──•──•──•──•──•──•*_
  ➳ ${prefix}maker19 <text>
  ➳ ${prefix}maker20 <text>
  
+  ⌂ *THANKS TO*
+ ➢ irfann
+ ➢ Ra-api
+ ➢ Dt4-api
+ ➢ Hxz-api
+ ➢ Xfarr-api
+ ➢ Leyscoders
+ ➢ Lexxy Official
+ ➢ Penyedia Modules
+
 `+'\`\`\`® Simple Bot Whatsapp\`\`\`'
 }
 
