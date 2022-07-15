@@ -42,6 +42,7 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
  ➢ Dt4-api
  ➢ Hxz-api
  ➢ Xfarr-api
+ ➢ Leyscoders
  ➢ Lexxy Official
  ➢ Penyedia Modules
 `
@@ -68,6 +69,7 @@ _*•──•──•──•──•──•──•──•*_
 
  ♤ *CONVERTER/TOOLS* ♤
  ➳ ${prefix}attp
+ ➳ ${prefix}tahta
  ➳ ${prefix}toimg
  ➳ ${prefix}tovid
  ➳ ${prefix}cuttly
@@ -106,17 +108,22 @@ _*•──•──•──•──•──•──•──•*_
  ♤ *SEARCH MENU* ♤
  ➳ ${prefix}jam
  ➳ ${prefix}lirik
+ ➳ ${prefix}loker
  ➳ ${prefix}meme
  ➳ ${prefix}couple
  ➳ ${prefix}quotes
  ➳ ${prefix}spekhp
+ ➳ ${prefix}ghstalk
  ➳ ${prefix}grupwa
  ➳ ${prefix}ytsearch
  ➳ ${prefix}darkjoke
+ ➳ ${prefix}faktaunik
  ➳ ${prefix}ppcouple
  ➳ ${prefix}kisahnabi
  ➳ ${prefix}memeindo
  ➳ ${prefix}infogempa
+ ➳ ${prefix}jadwalbola
+ ➳ ${prefix}jadwalbioskop
   
  ♤ *GAMES MENU* ♤
  ➳ ${prefix}delttc

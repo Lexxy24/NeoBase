@@ -1404,6 +1404,69 @@ ${buyan.detail}
 `
 reply(jamnya)
 break
+case prefix+'infoloker': case prefix+'loker':
+reply(mess.wait)
+var datan = await fetchJson(`https://leyscoders-api.herokuapp.com/api/info-loker?apikey=IkyOgiwara`)
+var sarah = datan.result
+var teks = `® *INFO LOWONGAN KERJA*\n\n`
+for (let x of sarah) {
+teks += `*Title :* ${x.title}\n*Perusahaan :* ${x.perusahaan}\n*Lokasi :* ${x.locate}\n*Gaji :* ${x.gaji}\n*Url :* ${x.url}\n\n`
+}
+reply(teks)
+break
+case prefix+'jadwalbioskop': case prefix+'bioskop':
+reply(mess.wait)
+var datan = await fetchJson(`https://leyscoders-api.herokuapp.com/api/jadwal-bioskop?apikey=IkyOgiwara`)
+var sarah = datan.result
+var teks = `® *JADWAL BIOSKOP*\n\n`
+for (let x of sarah) {
+teks += `*Judul :* ${x.title}\n*Url :* ${x.url}\n\n`
+}
+reply(teks)
+break
+case prefix+'jadwalbola':
+reply(mess.wait)
+var datan = await fetchJson(`https://leyscoders-api.herokuapp.com/api/jadwalbola?apikey=IkyOgiwara`)
+var sarah = datan.result
+var no = 1
+var teks = `® *JADWAL BOLA*\n\n`
+for (let x of sarah) {
+teks += `_Jadwal Bola Ke (${no++})_\n*Waktu :*\n${x.waktu}\n*Kickoff :*\n${x.kickoff}\n*Channel :*\n${x.channel}\n\n`
+}
+reply(teks)
+break
+case prefix+'faktaunik': case prefix+'fakta':
+var fkta = await fetchJson(`https://leyscoders-api.herokuapp.com/api/fakta?apikey=IkyOgiwara`)
+reply(`© *Fakta Unik*\n${fkta.result}`)
+break
+case prefix+'tahta':
+if (!isNan) return reply(`*Example:*\n${command} Neobot`)
+var TeksNya = body.slice(7)
+reply(mess.wait)
+var kokya = await getBuffer(`https://leyscoders-api.herokuapp.com/api/harta-tahta?text=${TeksNya}&apikey=IkyOgiwara`)
+conn.sendMessage(from, { image: kokya, caption: '® Tahta Maker' }, { quoted: msg })
+break
+case prefix+'ghstalk':
+if (!isNan) return reply(`*Example:*\n${command} Lexxy24`)
+var NickNya = body.slice(9)
+reply(mess.wait)
+var kokya = await fetchJson(`https://leyscoders-api.herokuapp.com/api/github?q=${NickNya}&apikey=IkyOgiwara`)
+var xny = kokya.result
+var loh = xny.user
+var TeksNyaCuy =`
+® *GITHUB STALK*
+Username : ${xny.username}
+NickName : ${loh.nama}
+Bio : ${loh.bio}
+Repost : ${loh.public_repos}
+Following : ${loh.following}
+Followers : ${loh.followers}
+Dibuat Pada : ${loh.dibuat_pada}
+Update Pada : ${loh.update_pada}
+Type : ${loh.type}
+`
+reply(TeksNyaCuy)
+break
 //BATAS CASE
 default:
 			if (!isGroup && isCmd) {
