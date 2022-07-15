@@ -1,1 +1,1 @@
-web: npm install && bash main.sh
+web: bash main.sh
