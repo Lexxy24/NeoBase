@@ -17,7 +17,6 @@ const { isTicTacToe, getPosTic } = require("../lib/tictactoe");
 const { addPlayGame, getJawabanGame, isPlayGame, cekWaktuGame, getGamePosi } = require("../lib/game");
 const tictac = require("../lib/tictac");
 const _prem = require("../lib/premium");
-
 const fs = require ("fs");
 const moment = require("moment-timezone");
 const util = require("util");
@@ -230,6 +229,7 @@ let { donasibot } = require('./help')
 		const buttonWithText = (from, text, footer, buttons) => {
 			return conn.sendMessage(from, { text: text, footer: footer, templateButtons: buttons })
 		}
+		
 		const sendContact = (jid, numbers, name, quoted, mn) => {
 			let number = numbers.replace(/[^0-9]/g, '')
 			const vcard = 'BEGIN:VCARD\n' 
@@ -299,7 +299,7 @@ let { donasibot } = require('./help')
 		  }
 		}
 
-		if (chats.startsWith("> ") && isOwner) {
+		if (chats.startsWith(">") && isOwner) {
 		console.log(color('[EVAL]'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Dari Owner aowkoakwoak`))
 		  const ev = (sul) => {
             var sat = JSON.stringify(sul, null, 2)
@@ -314,13 +314,13 @@ let { donasibot } = require('./help')
           } catch (e) {
            textImg(util.format(e))
           }
-		} else if (chats.startsWith("$ ") && isOwner) {
+		} else if (chats.startsWith("$") && isOwner) {
         console.log(color('[EXEC]'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Dari Owner aowkoakwoak`))
           exec(chats.slice(2), (err, stdout) => {
 		    if (err) return reply(`${err}`)
 		    if (stdout) reply(`${stdout}`)
 		  })
-        } else if (chats.startsWith("x ") && isOwner) {
+        } else if (chats.startsWith("x") && isOwner) {
 	    console.log(color('[EVAL]'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Dari Owner aowkaokwoak`))
 		 try {
 	       let evaled = await eval(chats.slice(2))
@@ -500,45 +500,73 @@ case prefix+'halah': case prefix+'hilih': case prefix+'huluh': case prefix+'hele
 			case prefix+'tes':
 			reply(`*STATUS BOT ONLINE*\n_${runtime(process.uptime())}_`)
 			break
-case prefix+'tiktok':
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-			    if (!isNan) return reply(`Kirim perintah ${command} link`)
-			    if (!isUrl(args[1])) return reply(mess.error.Iv)
-			    if (!args[1].includes('tiktok')) return reply(mess.error.Iv)
-			    var mylink = body.slice(8)
-			    reply(mess.wait)
-			    hxz.ttdownloader(mylink).then( data => {
-			      conn.sendMessage(from, { video: { url: data.nowm }}, { quoted: msg })
-			      limitAdd(sender, limit)
-				}).catch(() => reply(mess.error.api))
-				reply(`Limit Terpakai 1\nSisa Limit Anda : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}`)
-			    break
-			    case prefix+'tiktoknowm':
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-			    if (!isNan) return reply(`Kirim perintah ${command} link`)
-			    if (!isUrl(args[1])) return reply(mess.error.Iv)
-			    if (!args[1].includes('tiktok')) return reply(mess.error.Iv)
-			    var mylink = body.slice(12)
-			    reply(mess.wait)
-			    hxz.ttdownloader(mylink).then( data => {
-			      conn.sendMessage(from, { video: { url: data.nowm }}, { quoted: msg })
-			      limitAdd(sender, limit)
-				}).catch(() => reply(mess.error.api))
-				reply(`Limit Terpakai 1\nSisa Limit Anda : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}`)
-			    break
-			case prefix+'tiktokaudio':
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-			    if (!isNan) return reply(`Kirim perintah ${command} link`)
-			    if (!isUrl(args[1])) return reply(mess.error.Iv)
-			    if (!args[1].includes('tiktok')) return reply(mess.error.Iv)
-			    var mylink = body.slice(13)
-			    reply(mess.wait)
-			    hxz.ttdownloader(mylink).then( data => {
-			      conn.sendMessage(from, { audio: { url: data.nowm }, mimetype: 'audio/mp4' }, { quoted: msg })
-			       limitAdd(sender, limit)
-				}).catch(() => reply(mess.error.api))
-				reply(`Limit Terpakai 1\nSisa Limit Anda : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}`)
-		        break
+			case prefix+'tiktok': case prefix+'tiktoknowm':
+            if (!isNan) return reply('Masukkan Query Link!')
+            reply(mess.wait)
+            hxz.ttdownloader(q).then( data => {
+            conn.sendMessage(from, { video: { url: data.nowm }, mimetype: 'video/mp4' }, { quoted: msg })
+            })
+	        break
+case prefix+'mediafire':
+if (!args[1]) return reply(`Example: ${prefix}mediafire link`)
+reply(mess.wait)
+var UrlNyaa = body.slice(11)
+var butf = await fetchJson(`https://leyscoders-api.herokuapp.com/api/mediafire?url=${UrlNyaa}&apikey=IkyOgiwara`)
+var resnya = butf.result
+var berhasil =`
+❑ *MEDIAFIRE DOWNLOAD*
+
+➳ Judul : Undefined
+➳ Size : ${resnya.size}
+➳ Source : ${resnya.download}
+`
+reply(berhasil)
+conn.sendMessage(from, { document: { url: resnya.download }, mimetype: 'document/application', fileName: `MediaFireDownload.zip` }, {quoted: msg} )
+break
+case prefix+'attp':
+if (!isNan) return reply(`Example :\n${command} Hai`)
+var cottdek = body.slice(6)
+var atttp = await getBuffer(`https://myselfff.herokuapp.com/docs/random/attp?query=${cottdek}`)
+conn.sendMessage(from, { sticker: atttp }, {quoted: msg})
+break
+case prefix+'spekhp':
+if (!isNan) return reply(`Example :\n${command} oppo`)
+var arenanya = body.slice(7)
+var resny = await fetchJson(`https://myselfff.herokuapp.com/docs/search/arena?query=${arenanya}`)
+var kokgitu = resny.result
+var textaren =`
+➳ *RESULT SPEK HP*
+
+*Nama Hp :* ${kokgitu.spek}
+
+*Type :* ${kokgitu.type}
+
+*Size :* ${kokgitu.size}
+
+*Resolusi :* ${kokgitu.resolusi}
+
+*Chipset :* ${kokgitu.chipset}
+
+*Os :* ${kokgitu.os}
+
+*Cpu :* ${kokgitu.cpu}
+
+*Internal :* ${kokgitu.internal}
+
+*Camera :* ${kokgitu.camera}
+
+*Baterai :* ${kokgitu.batterai}
+`
+reply(textaren)
+break
+            case prefix+'ttaudio':
+            if (!isNan) return reply('Masukkan Query Link!')
+            reply(mess.wait)
+            var linknya = body.slice(9)
+            hxz.ttdownloader(linknya).then( data => {
+            conn.sendMessage(from, { audio: { url: data.nowm }, mimetype: 'audio/mp4' }, { quoted: msg })
+            })
+	        break
             case prefix+'play':
             if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                if (!args[1]) return reply(`*Example* :\n${command} Dj Angel Baby`)
@@ -636,8 +664,7 @@ case prefix+'ytmp4': case prefix+'mp4':
 				}).catch(() => reply(mess.error.api))
 				reply(`Limit Terpakai 1\nSisa Limit Anda : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}`)
 			    break
-			// Owner Menu
-
+// Owner Menu
 case prefix+'nopp':
 if (!isOwner) return reply(mess.OnlyOwner)
 conn.multi = false
@@ -649,6 +676,48 @@ if (!isOwner) return reply(mess.OnlyOwner)
 conn.multi = true
 conn.nopref = false
 reply(`*Sukses Settings : Multi Prefix*`)
+break
+case prefix+'couple': 
+case prefix+'ppcouple':
+reply(mess.wait)
+var buff = await fetchJson(`https://leyscoders-api.herokuapp.com/api/ppcouple?apikey=IkyOgiwara`)
+var beps = buff.result
+conn.sendMessage(from, { image: { url: beps.male }, caption: '® Couple Versi Cowok' }, { quoted: msg})
+conn.sendMessage(from, { image: { url: beps.female }, caption: '® Couple Versi Cewek' }, { quoted: msg})
+break
+case prefix+'darkjoke':
+reply(mess.wait)
+var buff = await getBuffer(`https://leyscoders-api.herokuapp.com/api/darkjoke?apikey=IkyOgiwara`)
+conn.sendMessage(from, { image: buff, caption: '® Random Darkjoke'}, { quoted: msg })
+break
+case prefix+'meme': case prefix+'memeindo':
+reply(mess.wait)
+var buff = await getBuffer(`https://leyscoders-api.herokuapp.com/api/memeindo?apikey=IkyOgiwara`)
+conn.sendMessage(from, { image: buff, caption: '® Random Memeindo'}, { quoted: msg })
+break
+case prefix+'loli':
+reply(mess.wait)
+var buff = await getBuffer(`https://leyscoders-api.herokuapp.com/api/loli?apikey=IkyOgiwara`)
+conn.sendMessage(from, { image: buff, caption: '® Random Loli'}, { quoted: msg })
+break 
+case prefix+'kisahnabi':
+if (!isNan) return reply(`*Example:*\n${command} muhammad`)
+reply(mess.wait)
+var namnyaq = body.slice(11)
+var buff = await fetchJson(`https://hardianto.xyz/api/muslim/kisahnabi?nabi=${namnyaq}&apikey=hardianto`)
+var kisahnya = buff.result
+
+var iksah = `
+> *KISAH NABI*
+Name : ${kisahnya.name}
+Kelahiran : ${kisahnya.kelahiran}
+Usia Wafat : ${kisahnya.wafat_usia}
+Singgah : ${kisahnya.singgah}
+
+Kisah :
+${kisahnya.kisah}
+`
+reply(iksah)
 break
 			case prefix+'exif':
 			    if (!isOwner) return reply(mess.OnlyOwner)
@@ -1266,7 +1335,74 @@ break
 
 case prefix+'sc':
 case prefix+'script':
-reply(`*Source Code :*\nhttps://github.com/Lexxy24/NEOBOTV4`)
+reply(`*Source Code :*\nhttps://youtube.com/channel/UCLd-bhT8Dqq9PjGc6bWUVyg`)
+break
+case prefix+'tinyurl':
+if (!isNan) return reply(`*Example :*\n${prefix}tinyurl google.com`)
+var MYURL = body.slice(9)
+reply(mess.wait)
+var neopi2 = await fetchJson(`https://leyscoders-api.herokuapp.com/api/cuttly?url=${MYURL}&apikey=IkyOgiwara`)
+var cotbot = neopi2.result
+var neopi = await fetchJson(`https://hardianto.xyz/api/short/tinyurl?url=${MYURL}&apikey=hardianto`)
+var awokawok = `
+‣ *SHORT TINYURL*
+
+➢ _Original_ :
+${MYURL}
+
+➢ _Tinyurl_ :
+${neopi.result}
+
+➢ _Create_ :
+Tanggal : ${cotbot.create_at}
+Waktu : ${jam} Wib
+`
+reply(awokawok)
+break
+case prefix+'cuttly':
+if (!isNan) return reply(`*Example :*\n${prefix}cuttly google.com`)
+var MYURL = body.slice(8)
+reply(mess.wait)
+var neopi = await fetchJson(`https://leyscoders-api.herokuapp.com/api/cuttly?url=${MYURL}&apikey=IkyOgiwara`)
+var cotbot = neopi.result
+var awokawok = `
+‣ *SHORT CUTTLY*
+
+➢ _Original_ :
+${MYURL}
+
+➢ _Tinyurl_ :
+${cotbot.hasil}
+
+➢ _Create_ :
+Tanggal : ${cotbot.create_at}
+Waktu : ${jam} Wib
+`
+reply(awokawok)
+break
+case prefix+'jam':
+if (!isNan) return reply(`*Example :*\n${prefix}jam Jakarta`)
+reply(mess.wait)
+var DaerahNya = body.slice(5)
+var resny = await fetchJson(`https://leyscoders-api.herokuapp.com/api/jam-dunia?q=${DaerahNya}&apikey=IkyOgiwara`)
+var buyan = resny.result
+var jamwoi = buyan.jam
+var jamnya = `
+‣ *Jam Daerah ${DaerahNya}*
+Wit : ${jamwoi.wit}
+Wib : ${jamwoi.wib}
+Wita : ${jamwoi.wita}
+
+‣ *Matahari* : 
+${buyan.matahari}
+
+‣ *Tanggal* : 
+${buyan.tanggal}
+
+‣ *Detail* : 
+${buyan.detail}
+`
+reply(jamnya)
 break
 //BATAS CASE
 default:

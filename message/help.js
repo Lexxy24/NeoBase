@@ -67,9 +67,12 @@ _*•──•──•──•──•──•──•──•*_
  ➳ ${prefix}listprem
 
  ♤ *CONVERTER/TOOLS* ♤
- ➳ ${prefix}sticker
+ ➳ ${prefix}attp
  ➳ ${prefix}toimg
  ➳ ${prefix}tovid
+ ➳ ${prefix}cuttly
+ ➳ ${prefix}tinyurl
+ ➳ ${prefix}sticker
  
  ♤ *NULIS MENU* ♤
  ➳ ${prefix}nulis
@@ -101,10 +104,18 @@ _*•──•──•──•──•──•──•──•*_
  ➳ ${prefix}kitsune
   
  ♤ *SEARCH MENU* ♤
+ ➳ ${prefix}jam
  ➳ ${prefix}lirik
+ ➳ ${prefix}meme
+ ➳ ${prefix}couple
  ➳ ${prefix}quotes
+ ➳ ${prefix}spekhp
  ➳ ${prefix}grupwa
  ➳ ${prefix}ytsearch
+ ➳ ${prefix}darkjoke
+ ➳ ${prefix}ppcouple
+ ➳ ${prefix}kisahnabi
+ ➳ ${prefix}memeindo
  ➳ ${prefix}infogempa
   
  ♤ *GAMES MENU* ♤
