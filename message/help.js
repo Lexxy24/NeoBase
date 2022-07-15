@@ -108,16 +108,17 @@ _*•──•──•──•──•──•──•──•*_
  ➳ ${prefix}infogempa
   
  ♤ *GAMES MENU* ♤
- ➳ ${prefix}tictactoe
  ➳ ${prefix}delttc
+ ➳ ${prefix}tictactoe
  ➳ ${prefix}tebakgambar
   
  ♤ *PAYMENT/BANK* ♤
- ➳ ${prefix}buylimit
- ➳ ${prefix}buyglimit
- ➳ ${prefix}transfer
  ➳ ${prefix}limit
  ➳ ${prefix}saldo
+ ➳ ${prefix}transfer
+ ➳ ${prefix}buylimit
+ ➳ ${prefix}buyglimit
+ ➳ ${prefix}topbalance
  
  ♤ *AIUEO MENU* ♤
  ➳ ${prefix}hilih <text>
@@ -127,13 +128,13 @@ _*•──•──•──•──•──•──•──•*_
  ➳ ${prefix}holoh <text>
 
  ♤ *GROUP MENU* ♤
- ➳ ${prefix}linkgrup
- ➳ ${prefix}setppgrup
- ➳ ${prefix}setnamegc
- ➳ ${prefix}setdesc
  ➳ ${prefix}group
  ➳ ${prefix}revoke
  ➳ ${prefix}hidetag
+ ➳ ${prefix}setdesc
+ ➳ ${prefix}linkgrup
+ ➳ ${prefix}setppgrup
+ ➳ ${prefix}setnamegc
   
  ♤ *OWNER MENU* ♤
  ➳ ${prefix}bc

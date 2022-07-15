@@ -977,12 +977,12 @@ reply(`_Saldo Anda : Rp.${toCommas(getBalance(sender, balance))}_`)
 break
 			case prefix+'topbalance':{
                 balance.sort((a, b) => (a.balance < b.balance) ? 1 : -1)
-                let top = '*── 「 TOP BALANCE 」 ──*\n\n'
+                let top = '*── 「 DASHBOARD SALDO 」 ──*\n\n'
                 let arrTop = []
 				var total = 10
 				if (balance.length < 10) total = balance.length
                 for (let i = 0; i < total; i ++){
-                    top += `${i + 1}. @${balance[i].id.split("@")[0]}\n=> Balance : $${balance[i].balance}\n\n`
+                    top += `${i + 1}. @${balance[i].id.split("@")[0]}\n=> Saldo : Rp.${balance[i].balance}\n\n`
                     arrTop.push(balance[i].id)
                 }
                 mentions(top, arrTop, true)
@@ -997,7 +997,7 @@ break
                 if (getBalance(sender, balance) < ane) return reply(`Balance kamu tidak mencukupi untuk pembelian ini`)
                 kurangBalance(sender, ane, balance)
                 giveLimit(sender, parseInt(args[1]), limit)
-                reply(monospace(`Pembeliaan limit sebanyak ${args[1]} berhasil\n\nSisa Balance : $${getBalance(sender, balance)}\nSisa Limit : ${getLimit(sender, limitCount, limit)}/${limitCount}`))
+                reply(`Pembeliaan Limit Sebanyak ${args[1]}\nStatus Berhasil ✅\n\nSisa Saldo : Rp.${getBalance(sender, balance)}\nSisa Limit : ${getLimit(sender, limitCount, limit)}/${limitCount}`)
             }
                 break
 			case prefix+'transfer':
@@ -1012,7 +1012,7 @@ break
                  if (anu < args[2] || anu == 'undefined') return reply(`Balance Kamu Tidak Mencukupi Untuk Transfer Sebesar $${args[2]}, Kumpulkan Terlebih Dahulu\nKetik ${prefix}balance, untuk mengecek Balance mu!`)
                  kurangBalance(sender, parseInt(args[2]), balance)
                  addBalance(mentioned[0], parseInt(args[2]), balance)
-                 reply(`Sukses transfer balance sebesar $${args[2]} kepada @${mentioned[0].split("@")[0]}`)
+                 reply(`Sukses Transfer Saldo Sebesar $${args[2]} kepada @${mentioned[0].split("@")[0]}`)
             }
                  break
             case prefix+'buygamelimit':
@@ -1025,7 +1025,7 @@ break
                 if (getBalance(sender, balance) < ane) return reply(`Balance kamu tidak mencukupi untuk pembelian ini`)
                 kurangBalance(sender, ane, balance)
                 givegame(sender, parseInt(args[1]), glimit)
-                reply(monospace(`Pembeliaan game limit sebanyak ${args[1]} berhasil\n\nSisa Balance : $${getBalance(sender, balance)}\nSisa Game Limit : ${cekGLimit(sender, gcount, glimit)}/${gcount}`))
+                reply(monospace(`Pembeliaan game limit sebanyak ${args[1]} berhasil\n\nSisa Saldo : Rp.${getBalance(sender, balance)}\nSisa Game Limit : ${cekGLimit(sender, gcount, glimit)}/${gcount}`))
             }
                 break
 			case prefix+'limit':
