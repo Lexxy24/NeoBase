@@ -500,13 +500,27 @@ case prefix+'halah': case prefix+'hilih': case prefix+'huluh': case prefix+'hele
 			case prefix+'tes':
 			reply(`*STATUS BOT ONLINE*\n_${runtime(process.uptime())}_`)
 			break
-			case prefix+'tiktok': case prefix+'tiktoknowm':
+case prefix+'tiktok':
 			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 			    if (!isNan) return reply(`Kirim perintah ${command} link`)
 			    if (!isUrl(args[1])) return reply(mess.error.Iv)
 			    if (!args[1].includes('tiktok')) return reply(mess.error.Iv)
+			    var mylink = body.slice(8)
 			    reply(mess.wait)
-			    hxz.ttdownloader(args[1]).then( data => {
+			    hxz.ttdownloader(mylink).then( data => {
+			      conn.sendMessage(from, { video: { url: data.nowm }}, { quoted: msg })
+			      limitAdd(sender, limit)
+				}).catch(() => reply(mess.error.api))
+				reply(`Limit Terpakai 1\nSisa Limit Anda : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}`)
+			    break
+			    case prefix+'tiktoknowm':
+			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+			    if (!isNan) return reply(`Kirim perintah ${command} link`)
+			    if (!isUrl(args[1])) return reply(mess.error.Iv)
+			    if (!args[1].includes('tiktok')) return reply(mess.error.Iv)
+			    var mylink = body.slice(12)
+			    reply(mess.wait)
+			    hxz.ttdownloader(mylink).then( data => {
 			      conn.sendMessage(from, { video: { url: data.nowm }}, { quoted: msg })
 			      limitAdd(sender, limit)
 				}).catch(() => reply(mess.error.api))
@@ -517,8 +531,9 @@ case prefix+'halah': case prefix+'hilih': case prefix+'huluh': case prefix+'hele
 			    if (!isNan) return reply(`Kirim perintah ${command} link`)
 			    if (!isUrl(args[1])) return reply(mess.error.Iv)
 			    if (!args[1].includes('tiktok')) return reply(mess.error.Iv)
+			    var mylink = body.slice(13)
 			    reply(mess.wait)
-			    hxz.ttdownloader(args[1]).then( data => {
+			    hxz.ttdownloader(mylink).then( data => {
 			      conn.sendMessage(from, { audio: { url: data.nowm }, mimetype: 'audio/mp4' }, { quoted: msg })
 			       limitAdd(sender, limit)
 				}).catch(() => reply(mess.error.api))
@@ -1012,7 +1027,7 @@ break
                  if (anu < args[2] || anu == 'undefined') return reply(`Balance Kamu Tidak Mencukupi Untuk Transfer Sebesar $${args[2]}, Kumpulkan Terlebih Dahulu\nKetik ${prefix}balance, untuk mengecek Balance mu!`)
                  kurangBalance(sender, parseInt(args[2]), balance)
                  addBalance(mentioned[0], parseInt(args[2]), balance)
-                 reply(`Sukses Transfer Saldo Sebesar $${args[2]} kepada @${mentioned[0].split("@")[0]}`)
+                 reply(`Sukses Transfer Saldo Sebesar ${args[2]} kepada @${mentioned[0].split("@")[0]}`)
             }
                  break
             case prefix+'buygamelimit':
