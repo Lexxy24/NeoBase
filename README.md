@@ -51,7 +51,7 @@ Click the deploy icon below !
 ```
 
 # My Sosial
-- [Group Bot Wa](https://chat.whatsapp.com/FZcDqde6qzaI9hBuRo6zO8)
-- [Group Info Update](https://chat.whatsapp.com/DtLHdHIzccnJPOf8qoOCdz)
+- [Group Creator Bot](https://chat.whatsapp.com/E3zewfxrc5pKE6Rzb3BuqG)
+- [Group Info Update](https://chat.whatsapp.com/FZcDqde6qzaI9hBuRo6zO8)
 - [YouTube ](https://youtube.com/channel/UCGDk88W54RJOgk6b1p42NVg)
 - [Whatsapp ](https://wa.me/6283834558105)
